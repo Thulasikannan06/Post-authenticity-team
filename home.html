@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Home</h1>
+        <h2>Public Signature Poll System</h2>
+        <h3>Welcome User</h3>
+        <div class="home">
+            <button onclick="createPost()">
+                Create Post
+            </button>
+            <button onclick="logout()">
+                Logout
+            </button>
+        </div>
+        <br>
+        <hr>
+        <h3>Recent Posts</h3>
+        <br>
+        <div class="post">
+            <h3>No Posts Available</h3>
+            <p>
+                Click the <b>Create Post</b> button to upload a new post.
+            </p>
+        </div>
+    </div>
+    <script>
+        function createPost()
+        {
+            window.location.href="createpost.html";
+        }
+        function logout()
+        {
+            alert("Logged Out Successfully");
+            window.location.href="login.html";
+        }
+    </script>
+</body>
+</html>
+
+
