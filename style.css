@@ -54,32 +54,26 @@ button{
     font-size:16px;
     cursor:pointer;
 }
-
 button:hover{
     background-color:darkgreen;
 }
-
 p{
     text-align:center;
     margin-top:25px;
 }
-
 a{
     text-decoration:none;
     color:blue;
 }
-
 a:hover{
     text-decoration:underline;
 }
-
 /*Home Page*/
 body
 {
     background-color:rgb(107, 172, 193);
     font-family:Arial;
 }
-
 .container
 {
 width:500px;
@@ -89,31 +83,27 @@ padding:30px;
 border-radius:10px;
 box-shadow:0px 0px 10px grey;
 }
-
 h1
 {
     text-align:center;
     margin-bottom:20px;
 }
-
 h2
 {
     text-align:center;
     color:black;
     margin-top:20px;
 }
-
 h3
 {
     text-align:center;
+    margin:8px 0px;
 }
-
 .home
 {
     text-align:center;
     margin-top:20px;
 }
-
 .home button
 {
     padding:10px;
@@ -161,4 +151,31 @@ h3
 .post button:hover
 {
     background-color:darkgreen;
+}
+
+/*Create post*/
+
+textarea
+{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    margin-bottom:10px;
+    border:1px solid darkgreen;
+    border-radius:10px;
+    font-size:10px;
+    resize:none;
+}
+textarea:focus
+{
+    border:2px solid rgb(75, 186, 75);
+    outline:none;
+}
+.container form
+{
+    margin-top:5px;
+}
+.container button
+{
+    margin-top:5px;
 }
