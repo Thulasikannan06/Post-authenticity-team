@@ -59,10 +59,24 @@
                     alert("Password does not match");
                     return false;
                 }
-                localStorage.setItem("email", email);
-                localStorage.setItem("password", password);
-                alert("Registered Successful");
-                window.location.href="login.html";
+                var users = JSON.parse(localStorage.getItem("users"));
+                if(users == null)
+                {
+                    users = {};
+                }
+                if(users[email])
+                {
+                    alert("Email already registered");
+                    return false;
+                }
+                users[email] =
+                {
+                    name: name,
+                    password: password
+                };
+                localStorage.setItem("users", JSON.stringify(users));
+                alert("Registered Successfully");
+                window.location.href = "login.html";
                 return false;
             }
         </script>

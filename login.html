@@ -43,7 +43,7 @@
                     alert("Password must contain minimum 6 characters");
                     return false;
                 }
-                var savedEmail = localStorage.getItem("email");
+                /*var savedEmail = localStorage.getItem("email");
                 var savedPassword = localStorage.getItem("password");
                 if(savedEmail == null)
                 {
@@ -55,7 +55,24 @@
                 {
                     alert("Invalid Email or Password");
                     return false;
+                }*/
+                var users = JSON.parse(localStorage.getItem("users"));
+                if(users == null)
+                {
+                    alert("No Users Registered");
+                    return false;
                 }
+                if(users[email] == null)
+                {
+                    alert("Email is not Registered");
+                    return false;
+                }
+                if(users[email].password != password)
+                {
+                    alert("Invalid Password");
+                    return false;
+                }
+                localStorage.setItem("currentUser", email);
                 alert("Login Successful");
                 window.location.href = "home.html";
                 return false;

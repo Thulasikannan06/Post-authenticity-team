@@ -23,11 +23,7 @@
         <hr>
         <h3>Recent Posts</h3>
         <br>
-        <div class="post">
-            <h3>No Posts Available</h3>
-            <p>
-                Click the <b>Create Post</b> button to upload a new post.
-            </p>
+        <div class="post" id="postArea">
         </div>
     </div>
     <script>
@@ -44,6 +40,28 @@
             alert("Logged Out Successfully");
             window.location.href="login.html";
         }
-    </script>
-</body>
+        var image = localStorage.getItem("image");
+        var title = localStorage.getItem("title");
+        var description = localStorage.getItem("description");
+        if(image != null)
+        {
+            document.getElementById("postArea").innerHTML =
+            "<img src='" + image + "' width='300' height='200'><br><br>" +
+            "<h3>" + title + "</h3>" +
+            "<p>" + description + "</p><br>" +
+            "<button onclick='openPoll()'>View Poll</button>";
+        }
+        else
+        {
+            document.getElementById("postArea").innerHTML =
+            "<h3>No Posts Available</h3>" +
+            "<p>Click <b>Create Post</b> to upload a new post.</p>";
+        }
+
+        function openPoll()
+        {
+            window.location.href = "poll.html";
+        }
+        </script>
+    </body>
 </html>
