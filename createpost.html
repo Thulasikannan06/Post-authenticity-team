@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>Create Post</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h2>Create Post</h2>
+            <form onsubmit="return createPost()">
+                <label>Upload Image</label><br><br>
+                <input type="file" id="image"><br><br>
+                <label>Post Title</label><br><br>
+                <input type="text" id="title"><br><br>
+                <label>Description</label><br><br>
+                <textarea id="description" rows="5" cols="40"></textarea>
+                <br><br>
+                <button type="submit">
+                    Create Public Signature Poll
+                </button>
+                <br><br>
+                <button type="button" onclick="goHome()">
+                    Back to Home
+                </button>
+            </form>
+        </div>
+        <script>
+        function createPost()
+        {
+            var image = document.getElementById("image").files[0];
+            var title = document.getElementById("title").value;
+            var description = document.getElementById("description").value;
+            if(image=="")
+            {
+                alert("Please Upload Image");
+                return false;
+            }
+            if(title=="")
+            {
+                alert("Please Enter Title");
+                return false;
+            }
+            if(description=="")
+            {
+                alert("Please Enter Description");
+                return false;
+            }
+        }
+        reader.onload = function()
+        {
+            var postId = "post_" + new Date().getTime();
+
+            localStorage.setItem("postId", postId);
+            localStorage.setItem("image", reader.result);
+            localStorage.setItem("title", title);
+            localStorage.setItem("description", description);
+
+            localStorage.setItem(postId + "_support", 0);
+
+            alert("Post Created Successfully");
+            window.location.href = "poll.html";
+        }
+        function goHome()
+        {
+            window.location.href="home.html";
+        }
+        </script>
+    </body>
+</html>

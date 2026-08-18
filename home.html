@@ -1,0 +1,67 @@
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Home</h1>
+        <h2>Public Signature Poll System</h2>
+        <h3>Welcome User</h3>
+        <div class="home">
+            <button onclick="createPost()">
+                Create Post
+            </button>
+            <button onclick="goLogin()">
+                Back to Login
+            </button>
+            <button onclick="logout()">
+                Logout
+            </button>
+        </div>
+        <br>
+        <hr>
+        <h3>Recent Posts</h3>
+        <br>
+        <div class="post" id="postArea">
+        </div>
+    </div>
+    <script>
+        function createPost()
+        {
+            window.location.href="createpost.html";
+        }
+        function goLogin()
+        {
+            window.location.href="login.html";
+        }
+        function logout()
+        {
+            alert("Logged Out Successfully");
+            window.location.href="login.html";
+        }
+        var image = localStorage.getItem("image");
+        var title = localStorage.getItem("title");
+        var description = localStorage.getItem("description");
+        if(image != null)
+        {
+            document.getElementById("postArea").innerHTML =
+            "<img src='" + image + "' width='300' height='200'><br><br>" +
+            "<h3>" + title + "</h3>" +
+            "<p>" + description + "</p><br>" +
+            "<button onclick='openPoll()'>View Poll</button>";
+        }
+        else
+        {
+            document.getElementById("postArea").innerHTML =
+            "<h3>No Posts Available</h3>" +
+            "<p>Click <b>Create Post</b> to upload a new post.</p>";
+        }
+
+        function openPoll()
+        {
+            window.location.href = "poll.html";
+        }
+        </script>
+    </body>
+</html>
