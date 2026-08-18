@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <title>Public Signature Poll</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Public Signature Poll</h1>
+            <img id="pollImage" width="300" height="200">
+            <br><br>
+            <h3 id="pollTitle"></h3>
+            <p id="pollDescription"></p>
+            <hr><br>
+            <h3>Total Supports</h3>
+            <h2 id="count">0</h2>
+            <button onclick="supportPoll()">
+                Support
+            </button>
+            <br><br>
+            <h3 id="status">
+                Status : Pending
+            </h3>
+            <br>
+            <button onclick="goHome()">
+                Back to Home
+            </button>
+        </div>
+        <script>
+        var image = localStorage.getItem("image");
+        var title = localStorage.getItem("title");
+        var description = localStorage.getItem("description");
+        document.getElementById("pollImage").src = image;
+        document.getElementById("pollTitle").innerHTML = title;
+        document.getElementById("pollDescription").innerHTML = description;
+        var postId = localStorage.getItem("postId");
+        var support = localStorage.getItem(postId + "_support");
+        if(support == null)
+        {
+            support = 0;
+        }
+        else
+        {
+            support = parseInt(support);
+        }
+        document.getElementById("count").innerHTML = support;
+        var currentUser = localStorage.getItem("currentUser");
+        var supportKey = "supported_" + currentUser + "_" + postId;
+        if(support >= 10)
+        {
+            document.getElementById("status").innerHTML =
+            "Status : Active";
+        }
+        function supportPoll()
+        {
+            if(localStorage.getItem(supportKey)=="yes")
+            {
+                alert("You have already supported this poll.");
+                return;
+            }
+            support++;
+            localStorage.setItem(postId + "_support", support);
+            localStorage.setItem(supportKey, "yes");
+            document.getElementById("count").innerHTML = support;
+            if(support >= 10)
+            {
+                document.getElementById("status").innerHTML =
+                "Status : Active";
+                alert("Public Signature Poll Activated");
+            }
+        }
+        function goHome()
+        {
+            window.location.href = "home.html";
+        }
+        </script>
+    </body>
+</html>

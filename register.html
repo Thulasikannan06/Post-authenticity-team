@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <title>Register</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="login-box">
+            <h2>Register</h2>
+            <form onsubmit="return validateReg()">
+                <label>Name</label>
+                <input type="text" id="name">
+                <label>Email</label>
+                <input type="text" id="email">
+                <label>Password</label>
+                <input type="password" id="password">
+                <label>Confirm Password</label>
+                <input type="password" id="confirmPassword">
+                <button type="submit">Register</button>
+                <p>
+                    Already have an account? 
+                    <a href="login.html">Login</a>
+                </p>
+            </form>
+        </div>
+        <script>
+            function validateReg(){
+                var name = document.getElementById("name").value;
+                var email = document.getElementById("email").value;
+                var password = document.getElementById("password").value;
+                var confirmPassword = document.getElementById("confirmPassword").value;
+                if(name=="")
+                {
+                    alert("Please Enter Name");
+                    return false;
+                }
+                if(email=="")
+                {
+                    alert("Please Enter Email");
+                    return false;
+                }
+                var emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
+                if(!email.match(emailPattern))
+                {
+                    alert("Enter Valid Email");
+                    return false;
+                }
+                if(password=="")
+                {
+                    alert("Please Enter Password");
+                    return false;
+                }
+                if(password.length<6)
+                {
+                    alert("Password less than 6 characters");
+                    return false;
+                }
+                if(password != confirmPassword)
+                {
+                    alert("Password does not match");
+                    return false;
+                }
+                var users = JSON.parse(localStorage.getItem("users"));
+                if(users == null)
+                {
+                    users = {};
+                }
+                if(users[email])
+                {
+                    alert("Email already registered");
+                    return false;
+                }
+                users[email] =
+                {
+                    name: name,
+                    password: password
+                };
+                localStorage.setItem("users", JSON.stringify(users));
+                alert("Registered Successfully");
+                window.location.href = "login.html";
+                return false;
+            }
+        </script>
+    </body>
+</html>
